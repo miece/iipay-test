@@ -18,8 +18,11 @@ public class DateSort implements DateSorter {
 			
 			@Override
 			public int compare(Date date_1, Date date_2) {
+				
 				cal.setTime(date_2);
 				int date = cal.get(Calendar.MONTH);
+				
+				// if 'r' in the month
 				 if(theMonth(date).matches("(?i).*r.*")){
 					 return date_1.compareTo(date_2);
 				}
@@ -28,10 +31,12 @@ public class DateSort implements DateSorter {
 				}
 			}
 		});
+		
+		// add unsorted dates to a new set to be sorted
 		sortedDatesSet.addAll(unsortedDates);
 
+		
 		return sortedDatesSet;
-
 	}
 	
 	public static String theMonth(int month){
